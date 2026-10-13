@@ -7,6 +7,8 @@ services:
     startCommand: streamlit run app.py --server.address 0.0.0.0 --server.port $PORT --server.headless true
     healthCheckPath: /_stcore/health
     envVars:
+      - key: PYTHON_VERSION
+        value: 3.13.4
       - key: AI_PROVIDER
         value: OpenRouter
       - key: OPENROUTER_MODEL

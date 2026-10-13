@@ -31,7 +31,7 @@ Select a provider in the sidebar. For Ollama, make sure the server is running an
 
 ## Deploy to Render
 
-This folder contains a Render Blueprint at `render.yaml`. Push this project folder to a GitHub repository, then in Render choose **New + → Blueprint** and connect that repository. If you add this folder to a repository whose root is the parent directory, move/copy `render.yaml` to the repository root and set the service `rootDir` to `smart_travel_planner`.
+This folder contains a Render Blueprint at `render.yaml`. It pins Render to Python 3.13.4 because CrewAI does not yet support Python 3.14. Push this project folder to a GitHub repository, then in Render choose **New + → Blueprint** and connect that repository. If you add this folder to a repository whose root is the parent directory, move/copy `render.yaml` to the repository root and set the service `rootDir` to `smart_travel_planner`.
 
 When Render requests the `OPENROUTER_API_KEY` environment variable, enter the key in Render's secure Blueprint prompt or add it under the service's **Environment** settings. Do not put the key in `render.yaml` or commit it. The Blueprint defaults the deployed app to OpenRouter because a Render service cannot access an Ollama server running on your computer. The Streamlit app remains usable for the sourced itinerary and budget if an API key is not configured, but the AI-generated agent summary requires a valid OpenRouter key.
 
