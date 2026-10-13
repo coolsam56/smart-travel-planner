@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: smart-travel-planner
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: streamlit run app.py --server.address 0.0.0.0 --server.port $PORT --server.headless true
+    healthCheckPath: /_stcore/health
+    envVars:
+      - key: AI_PROVIDER
+        value: OpenRouter
+      - key: OPENROUTER_MODEL
+        value: meta-llama/llama-3.1-8b-instruct:free
+      - key: OPENROUTER_API_KEY
+        sync: false
