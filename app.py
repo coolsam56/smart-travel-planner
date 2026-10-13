@@ -79,11 +79,13 @@ with st.sidebar:
             "OpenRouter model",
             value=os.getenv("OPENROUTER_MODEL", "meta-llama/llama-3.1-8b-instruct:free"),
         )
-        api_key = st.text_input(
+        api_key_override = st.text_input(
             "OpenRouter API key",
-            value=os.getenv("OPENROUTER_API_KEY", ""),
+            value="",
             type="password",
+            help="Leave blank to use the OPENROUTER_API_KEY environment variable.",
         )
+        api_key = api_key_override or os.getenv("OPENROUTER_API_KEY", "")
         ollama_url = "http://localhost:11434"
     st.divider()
     st.caption("All trip costs are estimated in USD. Prototype hotel and fare costs are mock estimates.")
